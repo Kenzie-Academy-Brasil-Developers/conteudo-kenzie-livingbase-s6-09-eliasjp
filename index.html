@@ -13,15 +13,19 @@
     <title>Living</title>
 
     <!-- Global CSS -->
-    <link rel="stylesheet" href="/styles/globalStyles.css">
-    <link rel="stylesheet" href="/styles/text-type.css">
-    <link rel="stylesheet" href="/styles/button-styles.css">
+    <link rel="stylesheet" href="src/styles/globalStyles.css">
+    <link rel="stylesheet" href="src/styles/text-type.css">
+    <link rel="stylesheet" href="src/styles/button-styles.css">
 
     <!-- Local CSS -->
     <link rel="stylesheet" href="/pages/home/index.css">
     <link rel="stylesheet" href="/pages/home/header.css">
     <link rel="stylesheet" href="/pages/home/navigation.css">
+    <link rel="stylesheet" href="/pages/home/post.css">
+    <link rel="stylesheet" href="/pages/home/cards.css">
 
+    <!-- Javascript -->
+    <script defer src="/pages/home/render-post.js" type="module"></script>
 
 </head>
 
@@ -58,6 +62,10 @@
         <button class="button-light-grey text-style-4-sb">Aromas</button>
         <button class="button-light-grey text-style-4-sb">Saúde</button>
     </nav>
+
+    <main class="post-area">
+        <ul class="post-list"></ul>
+    </main>
 
     </div>
 

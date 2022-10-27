@@ -1,0 +1,10 @@
+.post-area {
+    margin-top: 46px;
+}
+
+.post-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 44px;
+    list-style: none;
+}
