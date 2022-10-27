@@ -25,7 +25,8 @@
     <link rel="stylesheet" href="/pages/home/cards.css">
 
     <!-- Javascript -->
-    <script defer src="/pages/home/render-post.js" type="module"></script>
+    <script defer src="/pages/home/render-news.js" type="module"></script>
+    <script defer src="/pages/home/filtered-news.js" type="module"></script>
 
 </head>
 
@@ -52,19 +53,20 @@
     </header>
 
     <nav class="categories">
-        <button class="button-brand text-style-4-sb">Todos</button>
-        <button class="button-light-grey text-style-4-sb">Pintura</button>
-        <button class="button-light-grey text-style-4-sb">Decoração</button>
-        <button class="button-light-grey text-style-4-sb">Organização</button>
-        <button class="button-light-grey text-style-4-sb">Limpeza</button>
-        <button class="button-light-grey text-style-4-sb">Segurança</button>
-        <button class="button-light-grey text-style-4-sb">Reforma</button>
-        <button class="button-light-grey text-style-4-sb">Aromas</button>
-        <button class="button-light-grey text-style-4-sb">Saúde</button>
+        <button class="button-category button-brand text-style-4-sb">Todos</button>
+        <button class="button-category button-light-grey text-style-4-sb">Pintura</button>
+        <button class="button-category button-light-grey text-style-4-sb">Decoração</button>
+        <button class="button-category button-light-grey text-style-4-sb">Organização</button>
+        <button class="button-category button-light-grey text-style-4-sb">Limpeza</button>
+        <button class="button-category button-light-grey text-style-4-sb">Segurança</button>
+        <button class="button-category button-light-grey text-style-4-sb">Reforma</button>
+        <button class="button-category button-light-grey text-style-4-sb">Aromas</button>
+        <button class="button-category button-light-grey text-style-4-sb">Saúde</button>
     </nav>
 
     <main class="post-area">
         <ul class="post-list"></ul>
+        <!-- <div class="infinite-scroll-threshold"></div> -->
     </main>
 
     </div>

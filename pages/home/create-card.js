@@ -1,16 +1,6 @@
-import { getPost } from "../../src/scripts/api.js"
 import { storageNews } from "../../src/scripts/localStorage.js"
 
-let currentPage = 0
-async function renderPost (page){
-    const news = await getPost (page)
-    console.log(news[0])
-    news.forEach(element => {
-        newsCards(element)
-    })
-}
-
-function newsCards (object){
+export function newsCards (object){
     const list = document.querySelector(`.post-list`)
 
     const card = document.createElement(`li`)
@@ -40,5 +30,3 @@ function newsCards (object){
     list.append(card)
     card.append(cardImage, cardTitle, cardDesc, cardLink)
 }
-
-renderPost (currentPage)

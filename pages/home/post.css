@@ -1,4 +1,5 @@
 .post-area {
+    position: relative;
     margin-top: 46px;
 }
 
@@ -7,4 +8,12 @@
     flex-wrap: wrap;
     gap: 44px;
     list-style: none;
+}
+
+.infinite-scroll-threshold {
+    position: absolute;
+    width: 100%;
+    height: 300px;
+    background-color: rgba(0, 0, 0, 0.3);
+    bottom: 0;
 }

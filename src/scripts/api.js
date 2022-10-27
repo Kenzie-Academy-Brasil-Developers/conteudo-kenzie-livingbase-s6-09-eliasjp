@@ -1,7 +1,7 @@
-export async function getPost (){
+export async function getPost (page){
     const url = "https://m2-api-living.herokuapp.com/news"
 
-    const fetching = await fetch (`${url}`, {
+    const fetching = await fetch (`${url}?page=${page}`, {
         method: "GET",
     })
     .then (resp => {
@@ -9,5 +9,6 @@ export async function getPost (){
     })
 
     const postArray = fetching.news
+
     return postArray
 }
