@@ -19,9 +19,7 @@ async function buttonEvents (){
             btn.addEventListener(`click`, async (e) => {
                   currentPage = 0
                   const trigger = document.querySelector(`.infinite-scroll-threshold`)
-                  trigger.remove()
                   if (e.target.innerHTML == "Todos"){
-                        console.log(trigger)
                         await renderPost (news)
                         currentPage++
                   }else {
@@ -38,7 +36,6 @@ async function buttonEvents (){
                               currentPage++
                         }
                   }
-                  createTrigger ()
             })
       })
 }
@@ -59,7 +56,6 @@ async function infScroll (){
 
       const observer = new IntersectionObserver(async (infTrigger) => {
             if (infTrigger[0].isIntersecting){
-                  const trigger = document.querySelector(`.infinite-scroll-threshold`)
                   const news = await getPost (currentPage)
                   if (news.length != 0){
                         const buttons = [...btnCategories]
