@@ -18,7 +18,6 @@ async function buttonEvents (){
       btnCategories.forEach(btn => {
             btn.addEventListener(`click`, async (e) => {
                   currentPage = 0
-                  const trigger = document.querySelector(`.infinite-scroll-threshold`)
                   if (e.target.innerHTML == "Todos"){
                         await renderPost (news)
                         currentPage++
