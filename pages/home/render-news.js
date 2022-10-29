@@ -1,17 +1,55 @@
 import { getPost } from "../../src/scripts/api.js"
 import { newsCards } from "../home/create-card.js"
 import { createTrigger } from "../home/scroll-trigger.js"
+import { queryCategories, filterNews } from "../home/filtered-news.js"
 
 let currentPage = 0
-async function renderPost (page){
-      const news = await getPost (page)
+async function renderPost (news){
       news.forEach(element => {
             newsCards(element)
       })
 }
 
+async function buttonEvents (){
+      const btnCategories = queryCategories ()
+      const list = document.querySelector(`.post-list`)
+      const news = await getPost (currentPage)
+
+      btnCategories.forEach(btn => {
+            btn.addEventListener(`click`, async (e) => {
+                  currentPage = 0
+                  const trigger = document.querySelector(`.infinite-scroll-threshold`)
+                  trigger.remove()
+                  if (e.target.innerHTML == "Todos"){
+                        console.log(trigger)
+                        await renderPost (news)
+                        currentPage++
+                  }else {
+                        while (!list.innerHTML && currentPage < 3){
+                              const news = await getPost (currentPage)
+                              const filteredNews = filterNews (news, e.target)
+                              await renderPost (filteredNews)
+                              currentPage++
+                        }
+                        while (currentPage < 3 && list.childNodes.length <= 2){
+                              const news = await getPost (currentPage)
+                              const filteredNews = filterNews (news, e.target)
+                              await renderPost (filteredNews)
+                              currentPage++
+                        }
+                  }
+                  createTrigger ()
+            })
+      })
+}
+
 async function infScroll (){
       const trigger = document.querySelector(`.infinite-scroll-threshold`)
+      const btnCategories = queryCategories ()
+      const news = await getPost (currentPage)
+      const list = document.querySelector(`.post-list`)
+
+      
 
       const options = {
             root: null,
@@ -21,13 +59,21 @@ async function infScroll (){
 
       const observer = new IntersectionObserver(async (infTrigger) => {
             if (infTrigger[0].isIntersecting){
-                  currentPage++
-                  console.log(currentPage)
+                  const trigger = document.querySelector(`.infinite-scroll-threshold`)
                   const news = await getPost (currentPage)
                   if (news.length != 0){
-                        renderPost (currentPage)
-                  } else {
-                        trigger.remove()
+                        const buttons = [...btnCategories]
+                        const filtered = buttons.filter(element => element.classList.contains("selected"))
+
+                        if (filtered[0].innerHTML != "Todos"){
+                              const filteredArray = filterNews (news, filtered[0])
+                              console.log(filteredArray)
+                              renderPost (filteredArray)
+                              currentPage++
+                        }else {
+                              renderPost (news)
+                              currentPage++
+                        }
                   }
             }
       }, options)
@@ -37,7 +83,7 @@ async function infScroll (){
 
 async function startRender (){
       createTrigger ()
-      await renderPost (currentPage)
+      buttonEvents ()
       infScroll ()
 }
 

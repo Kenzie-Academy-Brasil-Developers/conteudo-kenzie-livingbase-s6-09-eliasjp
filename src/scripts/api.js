@@ -8,7 +8,10 @@ export async function getPost (page){
         return resp.json()
     })
 
-    const postArray = fetching.news
-
-    return postArray
+    if (fetching.news != []){
+        const postArray = fetching.news
+        return postArray
+    }else {
+        return
+    }
 }
