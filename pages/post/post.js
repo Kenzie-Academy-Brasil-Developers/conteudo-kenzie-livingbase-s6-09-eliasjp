@@ -36,3 +36,5 @@ function postDOM (object){
 }
 
 callPost ()
+
+console.log()
