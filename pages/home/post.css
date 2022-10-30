@@ -1,0 +1,18 @@
+.post-area {
+    position: relative;
+    margin-top: 46px;
+}
+
+.post-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 44px;
+    list-style: none;
+}
+
+.infinite-scroll-threshold {
+    width: 100%;
+    height: 100px;
+    z-index: -1;
+    position: absolute;
+}

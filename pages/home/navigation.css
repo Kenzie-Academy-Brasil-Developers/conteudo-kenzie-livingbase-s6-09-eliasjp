@@ -1,0 +1,6 @@
+.categories {
+    display: flex;
+    gap: 20px;
+    overflow-x: scroll;
+    margin-top: 74px;
+}
